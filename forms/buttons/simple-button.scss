@@ -1,8 +1,14 @@
 /*
     Простейшая кнопка с эффектом hover
     
+    ССЫЛКА:
     <a href="#" class="s-btn">Заказать</a>
+
+    КНОПКА:
     <button class="s-btn">Заказать</button>
+
+    БЛОЧНЫЙ ЭЛЕМЕНТ (s-btn_block):
+    <button class="s-btn s-btn_block">Заказать</button>
 */
 
 $border-radius: 5px;
@@ -27,4 +33,9 @@ $background-hover-color: #00d514;
 
 .s-btn:hover {
   background-color:$background-hover-color;
+}
+
+.s-btn_block {
+  display: flex;
+  width: 100%;
 }
