@@ -1,0 +1,111 @@
+/*
+  Modification code
+  https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
+
+    Простейший чекбокс
+
+    <label class="s-checkbox">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+        ONe
+    </label>
+
+    <label class="s-checkbox">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+        <div class="label-group">
+            <span>Согласен с условиями обработки персональных данных.</span>
+            <a href="">Политика конфиденциальности</a>
+        </div>
+    </label>
+    
+*/
+$background-hover-color: #FFF;
+$background-color: #FFF;
+$background-checked-color: #FFF;
+$check-mark-color: $green-mint;
+$border-color: $green-mint;
+
+.s-checkbox {
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  /* Hide the browser's default checkbox */
+  input {
+    position: relative;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* Create a custom checkbox */
+  .checkmark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: $background-color;
+    margin-right: 8px;
+    border: 1px solid $border-color;
+    overflow: hidden;
+  }
+
+  /* On mouse-over, add a grey background color */
+  &:hover input ~ .checkmark {
+    background-color: $background-hover-color;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+  input:checked ~ .checkmark {
+    background-color: $background-checked-color;
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: block;
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+
+  /* Show the checkmark when checked */
+  input:checked ~ .checkmark:after {
+    opacity: 1;
+    transform: rotate(45deg);
+  }
+
+  /* Style the checkmark/indicator */
+  .checkmark:after {
+    width: 5px;
+    height: 10px;
+    left: 6px;
+    top: 1px;
+    border: solid $check-mark-color;
+    border-width: 0 2px 2px 0;
+    //transition: transform ease-in-out 0.2s, opacity ease-in-out 0.2s;
+    transition: all ease-in-out 0.2s;
+  }
+
+    /* Text group */
+  .label-group {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .checkmark + .label-group {
+    margin-top: 0px;
+  }
+}
