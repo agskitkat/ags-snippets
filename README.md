@@ -1,6 +1,6 @@
 # ags-snippets
-Мои сниппеты, используемые на работе и в быту
-Ссылка на фигму: https://www.figma.com/file/Pz4lLcT73gxWkttr1uoN0X/Untitled?node-id=0%3A1
+Мои сниппеты, используемые на работе и в быту <br>
+Ссылка на макет: <br> https://www.figma.com/file/Pz4lLcT73gxWkttr1uoN0X/Untitled?node-id=0%3A1
 
 # forms
 Формы и связь между ними
