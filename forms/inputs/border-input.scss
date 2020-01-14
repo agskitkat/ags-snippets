@@ -1,10 +1,20 @@
 /*
 Стилизованый инпут с границами
 
+ТЕКСТ:
 <div class="input-border">
     <label>
         <span class="label">Email</span>
         <input type="text">
+    </label>
+</div>
+
+РАДИО КНОПКА:
+<div class="input-border input-border-radio">
+    <label>
+        <input name="delivery" type="radio">
+        <span class="radio"></span>
+        <span class="label">Курьером</span>
     </label>
 </div>
 
@@ -19,8 +29,8 @@ $text-color: #0D0D0D;
 .input-border {
   height: 60px;
   width: 100%;
-  margin-top: 12px;
-  margin-bottom: 8px;
+  padding-top: 12px;
+  padding-bottom: 8px;
   label {
     display: flex;
     flex-direction: column;
@@ -37,13 +47,50 @@ $text-color: #0D0D0D;
       font-size: 12px;
       margin-top: 8px;
     }
-    input {
+    input, select {
       display: block;
       border: none;
       width: 100%;
       line-height: 16px;
       font-size:12px;
       margin-bottom: 8px;
+      font-weight: bold;
     }
+    select {
+      -webkit-appearance: none;
+    }
+    select::-ms-expand {
+      display: none;
+    }
+  }
+}
+
+.input-border.input-border-radio {
+  label {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    .label {
+      margin-top: 0px;
+      font-size: 16px;
+      color: $text-color;
+    }
+    input[type=radio] {
+      display: none;
+    }
+  }
+  .radio {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+    margin-right: 8px;
+    transition: border ease-in-out 0.2s;
+  }
+  input:checked+.radio {
+    border: 6px solid $border-color;
   }
 }
