@@ -1,0 +1,49 @@
+/*
+Стилизованый инпут с границами
+
+<div class="input-border">
+    <label>
+        <span class="label">Email</span>
+        <input type="text">
+    </label>
+</div>
+
+*/
+
+// Цвет границы
+$border-color: #DD0000;
+
+// Цвет текста 
+$text-color: #0D0D0D;
+
+.input-border {
+  height: 60px;
+  width: 100%;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  label {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    padding:0 20px;
+    .label {
+      color: $text-color;
+      line-height: 16px;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+    input {
+      display: block;
+      border: none;
+      width: 100%;
+      line-height: 16px;
+      font-size:12px;
+      margin-bottom: 8px;
+    }
+  }
+}
