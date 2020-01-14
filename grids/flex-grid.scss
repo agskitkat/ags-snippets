@@ -1,0 +1,57 @@
+// Колонок в сетке
+$grid-cols: 12;
+
+// Расстояние между колонками
+// край|колонка|$grid-space|колонка|$grid-space|...колонка|край
+$grid-space: 20px;
+
+// Определяем брейкпоинты
+$break-point: (
+    s: 360px,
+    m: 400px,
+    l: 760px,
+    xl: 1020px,
+    xxl: 1200px
+);
+
+@mixin col( $deliver) {
+    box-sizing: border-box;
+    width: 100% / $deliver;
+    padding: 0 $grid-space/2;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  @if($grid-space != "") {
+    margin-left: ($grid-space/2) * -1 ;
+    margin-right: ($grid-space/2) * -1;
+  }
+  
+  // Дефолтно ширина 100%
+  .col {
+    width: 100%;
+  }
+  @for $i from 1 through $grid-cols {
+    .col-#{$grid-cols/$i} {
+      @include col($i);
+    }
+  }
+
+  // Проход по брейкпоинтам
+  @each $break-point-name, $break-point-min-width in $break-point {
+
+    // min-width принцип mobile first
+    @media (min-width: $break-point-min-width) {
+
+      // Собираем сетку
+      @for $i from 1 through $grid-cols {
+        .col-#{$break-point-name}-#{$grid-cols/$i} {
+          @include col($i);
+        }
+      }
+
+    }
+
+  }
+}
