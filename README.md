@@ -5,7 +5,7 @@
 # forms
 Формы и связь между ними
 
-# forms\buttons
+# forms/buttons
 Кнопки
 
 # forms/inputs
