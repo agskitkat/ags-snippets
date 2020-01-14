@@ -1,0 +1,30 @@
+/*
+    Простейшая кнопка с эффектом hover
+    
+    <a href="#" class="s-btn">Заказать</a>
+    <button class="s-btn">Заказать</button>
+*/
+
+$border-radius: 5px;
+$font-color: #FFF;
+$background-color: #0cc61d;
+$background-hover-color: #00d514;
+
+.s-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  height: 60px;
+  border-radius: $border-radius;
+  background-color:$background-color;
+  color:$font-color;
+  text-decoration: none;
+  padding: 0 20px;
+  border: none;
+  transition: background-color ease-in-out 0.3s;
+}
+
+.s-btn:hover {
+  background-color:$background-hover-color;
+}
