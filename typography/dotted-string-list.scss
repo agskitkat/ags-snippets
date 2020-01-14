@@ -1,0 +1,59 @@
+/*
+
+Ключ - значение, а между ними точки.
+А-ля:
+Сумма ......... 11 290 ₽
+Скидка ......... 1 290 ₽
+
+<div class="dotted-sting-list">
+
+    <div class="dotted-sting">
+        <span>
+            Сумма
+        </span>
+        <span class="dotted"></span>
+        <span>
+            11 290 ₽
+        </span>
+    </div>
+
+    <div class="dotted-sting">
+        <span>
+            Скидка
+        </span>
+        <span class="dotted"></span>
+        <span>
+            1 290 ₽
+        </span>
+    </div>
+
+    <div class="dotted-sting">
+        <span>
+            Скидка
+        </span>
+        <span class="dotted"></span>
+        <span>
+            1 290 ₽
+        </span>
+    </div>
+
+</div>
+*/
+
+.dotted-sting-list {
+  .dotted-sting {
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    line-height: 20px;
+    .dotted {
+      display: block;
+      box-sizing: border-box;
+      flex-grow:2;
+      margin:0 8px;
+      margin-bottom: 4px;
+      border-bottom: dotted 2px $black;
+    }
+  }
+}
