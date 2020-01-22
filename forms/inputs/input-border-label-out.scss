@@ -87,14 +87,15 @@ $styles: map-get($border-input-label-out-array,"");
   }
   .error {
     max-height: 0px;
+    opacity: 0;
     overflow: hidden;
-    margin: $grid-base + px 0px 0px;
+    margin: 0px;
     box-sizing: border-box;
     //display: none;
     color: map-get($styles,"input-error-color");
     font-size: map-get($styles, "error-font-size");
     line-height: map-get($styles,"error-line-height") * $grid-base + px;
-    transition: max-height 0.5s ease-in-out;
+    transition: max-height 0.2s ease-in-out, margin 0.2s ease-in-out, opacity 0.2s ease-in-out;
   }
 }
 .#{$name}.inline {
@@ -105,6 +106,8 @@ $styles: map-get($border-input-label-out-array,"");
     border: 1px solid map-get($styles,"input-error-color");
   }
   .error {
+    opacity: 1;
+    margin: $grid-base + px 0px 0px;
     max-height: 1000px;
     display: block;
   }
