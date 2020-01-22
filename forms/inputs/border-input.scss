@@ -26,6 +26,9 @@ $border-color: #DD0000;
 // Цвет текста 
 $text-color: #0D0D0D;
 
+// Цвет ошибки
+$error-color: #CF6F6F;
+
 .input-border {
   height: 60px;
   width: 100%;
@@ -61,6 +64,23 @@ $text-color: #0D0D0D;
     }
     select::-ms-expand {
       display: none;
+    }
+      
+    .error-message {
+      display: none;
+    }
+  }
+}
+
+.input-border.input-border_error {
+  label {
+    border-color: $error-color;
+    .error-message {
+      display: block;
+      font-size: 12px;
+      line-height: 16px;
+      padding-top:4px;
+      color: $error-color;
     }
   }
 }
