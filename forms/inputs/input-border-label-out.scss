@@ -1,0 +1,145 @@
+/*
+Обычный
+<div class="input-border-label-out">
+    <label>
+        <span class="label">Email</span>
+        <input type="text">
+        <p class="error"></p>
+    </label>
+</div>
+Ввод неверен
+<div class="input-border-label-out error">
+    <label>
+        <span class="label">Email</span>
+        <input type="text">
+        <p class="error"></p>
+    </label>
+</div>
+TODO: Сдлать блокировку, мол нельзя ввести
+*/
+
+// Базовая сетка (4px)
+$grid-base: 4;
+
+// Фабрика кнопок
+$border-input-label-out-array: (
+  // Дефолтное значение настроек
+  "": (
+    "input-border-color": #6FCF97,
+    "input-error-color": #E52421,
+    "input-label-color": #000000,
+     // размеры относительно базовой сетки
+    "input-height": 12, // 48
+    "input-font-size": 16px,
+    "label-font-size": 16px,
+    "label-font-height": 5, // 20
+    "error-font-size": 12px, // 20
+    "error-line-height": 3
+  ),
+  /*
+  Добавляя массив создаём модификатор, нпаример yellow
+  <div class="input-border-label-out yellow">
+  ...
+  ...
+  */
+  // TODO: Сдлеать так, что бы не надо было все значения проставлять
+  "yellow": (
+      "input-border-color": #cecf4d,
+      "input-error-color": #E52421,
+      "input-label-color": #000000,
+      "input-height": 12,
+      "input-font-size": 16px,
+      "label-font-size": 16px,
+      "label-font-height": 5,
+      "error-font-size": 12px,
+      "error-line-height": 3
+  )
+);
+$name: "input-border-label-out";
+$styles: map-get($border-input-label-out-array,"");
+
+.#{$name} {
+  box-sizing: border-box;
+  display: block;
+  label {
+    box-sizing: border-box;
+    display: block;
+  }
+  .label {
+    box-sizing: border-box;
+    display: block;
+    font-size: map-get($styles,"label-font-size");
+    line-height: map-get($styles,"label-font-height") * $grid-base + px;
+    color: map-get($styles,"input-label-color");
+    margin-bottom: 3 * $grid-base + px;
+  }
+  input {
+    width:100%;
+    display: block;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid map-get($styles,"input-border-color");
+    height: map-get($styles,"input-height") * $grid-base + px;
+    padding: 0 5*$grid-base+px;
+    font-size: map-get($styles,"input-font-size");
+    line-height: map-get($styles,"input-height") * $grid-base + px;
+    transition: border-color 0.2s;
+  }
+  .error {
+    max-height: 0px;
+    opacity: 0;
+    overflow: hidden;
+    margin: 0px;
+    box-sizing: border-box;
+    //display: none;
+    color: map-get($styles,"input-error-color");
+    font-size: map-get($styles, "error-font-size");
+    line-height: map-get($styles,"error-line-height") * $grid-base + px;
+    transition: max-height 0.2s ease-in-out, margin 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  }
+}
+.#{$name}.inline {
+  display: inline;
+}
+.#{$name}.error {
+  input {
+    border: 1px solid map-get($styles,"input-error-color");
+  }
+  .error {
+    opacity: 1;
+    margin: $grid-base + px 0px 0px;
+    max-height: 1000px;
+    display: block;
+  }
+}
+
+/*
+  В субклассе оставляем только изменения
+*/
+@each $class, $styles in $border-input-label-out-array {
+  @if($class != "") {
+    .#{$name}.#{$class} {
+      .label {
+        font-size: map-get($styles,"label-font-size");
+        line-height: map-get($styles,"label-font-height") * $grid-base + px;
+        color: map-get($styles,"input-label-color");
+      }
+      input {
+        border: 1px solid map-get($styles,"input-border-color");
+        height: map-get($styles,"input-height") * $grid-base + px;
+        font-size: map-get($styles,"input-font-size");
+        line-height: map-get($styles,"input-height") * $grid-base + px;
+      }
+      .error {
+        color: map-get($styles,"input-error-color");
+        font-size: map-get($styles, "error-font-size");
+        line-height: map-get($styles,"error-line-height") * $grid-base + px;
+      }
+    }
+    .#{$name}.#{$class}.error {
+      input {
+        border: 1px solid map-get($styles,"input-error-color");
+      }
+    }
+  }
+}
