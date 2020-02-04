@@ -1,0 +1,81 @@
+/*
+	Базируется на слик-слайдере и jQuery
+	https://github.com/kenwheeler/slick/
+	Ken Wheeler - спасибо тебе !
+	
+	JS:
+	$(function () {
+		$('.slider-static-width').slick({
+			lazyLoad: 'progressive',
+			dots: false,
+			infinite: true,
+			speed: 300,
+			slidesToShow: 1,
+			centerMode: false,
+			variableWidth: true,
+			arrows: false,
+		});
+	});
+	
+	HTML:
+	<div class="slider-static-width">
+		<div class="slider-slide">
+			<div class="slide-content">Контент</div>
+		</div>
+		<div class="slider-slide">
+			<div class="slide-content">Контент</div>
+		</div>
+		<div class="slider-slide">
+			<div class="slide-content">Контент</div>
+		</div>
+		...
+	</div>
+*/
+
+$grid-base: 4;
+$name: "slider-static-width";
+$slider-static-width:(
+  "" : (
+    "slider-background": #FFF,
+    "slide-width": 50,
+    "spaceing" : 5
+  ),
+  "second":(
+    "slider-background": #FFF,
+    "slide-width": 50,
+    "spaceing" : 5
+  )
+);
+$styles: map-get($slider-static-width,"");
+
+/*
+  Дефолтный стиль
+*/
+.#{$name} {
+  box-sizing: border-box;
+  background-color: map-get($styles, "slider-background");
+  .slider-slide {
+    padding-left: map-get($styles, "spaceing") * $grid-base + px;
+  }
+  .slide-content {
+    width:  map-get($styles, "slide-width") * $grid-base + px;
+  }
+}
+
+/*
+  В субклассе оставляем только изменения
+*/
+@each $class, $styles in $slider-static-width {
+  @if($class != "") {
+    .#{$name}.#{$class} {
+      background-color: map-get($styles, "slider-background");
+      .slider-slide {
+        padding-left: map-get($styles, "spaceing") * $grid-base + px;
+      }
+      .slide-content {
+        width:  map-get($styles, "slide-width") * $grid-base + px;
+      }
+    }
+  }
+}
+
