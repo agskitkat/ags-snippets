@@ -1,0 +1,64 @@
+.s-catalog-mobile-menu {
+	 top: 0px;
+	 left: -100vw;
+	 display: block;
+	 position: absolute;
+	 z-index: 100500;
+	 background: #fff;
+	 width: 100vw;
+	 height: 100vh;
+	 overflow-x: hidden;
+	 overflow-y: scroll;
+	 opacity: 0;
+	 transition: left 0.3s, opacity 0.3s;
+}
+ .s-catalog-mobile-menu .menu-header {
+	 height: 100px;
+	 line-height: 100px;
+	 padding: 0 20px;
+	 display: flex;
+	 justify-content: space-between;
+	 border-bottom: 1px solid #ddd;
+	 font-weight: bold;
+	 font-size: 20px;
+	 margin-bottom: 24px;
+}
+ .s-catalog-mobile-menu .menu-back-link {
+	 display: block;
+	 padding: 0px 20px;
+	 max-height: 100px;
+	 overflow: hidden;
+	 opacity: 1;
+	 transition: max-height 0.3s, opacity 0.3s;
+}
+ .s-catalog-mobile-menu .menu-back-link.hidden {
+	 opacity: 0;
+	 max-height: 0px;
+}
+ .s-catalog-mobile-menu .display-items-menu {
+	 display: none;
+}
+ .s-catalog-mobile-menu .viewport {
+	 margin-top: 24px;
+	 padding: 0 20px;
+}
+ .s-catalog-mobile-menu .viewport ul li a {
+	 text-decoration: none;
+	 font-weight: bold;
+	 font-size: 14px;
+	 line-height: 24px;
+	 color: #000;
+}
+ .s-catalog-mobile-menu #menu_viewport.hidden {
+	 opacity: 0;
+}
+ .s-catalog-mobile-menu #menu_viewport {
+	 opacity: 1;
+	 transition: opacity 0.3s;
+}
+ .s-catalog-mobile-menu.active {
+	 display: block;
+	 left: 0vw;
+	 opacity: 1;
+}
+ 
