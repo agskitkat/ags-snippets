@@ -12,12 +12,14 @@ $(function() {
             this.hash = window.location.hash;
             if(this.isMenuHash()) {
                 this.openMenu();
+            } else {
+                this.closeMenu();
             }
             $(window).on( 'hashchange', function( e ) {
                 this.hash = window.location.hash;
                 console.log("hashchange", this.hash);
                 // если нет хешьега - закрываем меню
-                if(this.hash === "") {
+                if(this.hash === "" || !this.isMenuHash()) {
                     this.closeMenu();
                     return true;
                 }
